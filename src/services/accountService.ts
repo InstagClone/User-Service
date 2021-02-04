@@ -44,7 +44,7 @@ export async function createAccount(username: string, plainPassword: string): Pr
   }
   const salt: string = await bcrypt.genSalt(10);
   const password: string = await bcrypt.hash(plainPassword, salt);
-  const user: Array<User> = await (await db.query(CREATE_ACCOUNT, [username, password, salt])).rows;
+  const user: Array<User> = (await db.query(CREATE_ACCOUNT, [username, password, salt])).rows;
   const response = user[0] ? 'succeeded' : 'failed';
   return { response };
 }
