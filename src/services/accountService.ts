@@ -54,7 +54,7 @@ export async function createProfile(userId: string, name: string, email: string,
   if (userProfiles.length !== 0) {
     throw new Error('cannot create profile once created');
   }
-  const userProfile: Array<UserProfile> = await (await db.query(CREATE_USER_PROFILE, [userId, name, email, dateOfBirth, new Date()])).rows;
+  const userProfile: Array<UserProfile> = (await db.query(CREATE_USER_PROFILE, [userId, name, email, dateOfBirth, new Date()])).rows;
   return userProfile[0];
 }
 
