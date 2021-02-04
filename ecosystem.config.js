@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    name: "Auth Server",
+    name: "User Service",
     script: 'dist/index.js',
     exec_mode: 'cluster',
     instances: 2,
